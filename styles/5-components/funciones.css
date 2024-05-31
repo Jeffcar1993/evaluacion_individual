@@ -1,0 +1,24 @@
+.lista__1_head li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+}
+
+li::marker {
+    color: var(--primary);
+}
+
+.center__button {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8rem;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Fundamentals Evaluation - Manipulación DOM</title>
+    <link rel="stylesheet" href="/styles/index.css" />
+  </head>
+  <body>
+    <header class="header">
+      
+      <div class="container header__container">
+        <a href="/index.html">
+          <img
+            src="assets/images/codeable-logo-sm.svg"
+            alt="codeable-logo"
+            width="135"
+            height="32"
+            class="header__logo"
+          />
+        </a>
+        <nav class="navigation">
+          <ul>
+            <li><a href="/diagramas.html">Diagramas VV</a></li>
+            <li><a href="/funciones.html">Funciones</a></li>
+            <li class="active"><a href="/dom.html">Manipulación del DOM</a></li>
+          </ul>
+        </nav>
+        <p class="header__name">Jefferson Cardenas</p>
+      </div>
+
+    </header>
+
+    <div class="center">
+
+      <h1 class="diagram__title">Manipulación del DOM</h1>
+        <h2 class="diagram__subtitle">Instrucciones</h2>
+        <p class="parrafos">Sigue las instrucciones y crea componentes web utilizando JavaScript, 
+          manipulando el DOM, escuchando eventos e implementando persistencia con localStorage.</p>
+        <h2 class="diagram__subtitle">Crea un 'Tooltip'</h2>
+        <p class="parrafos">Un Tooltip es un pequeño cuadro de información que aparece cuando pasas 
+          el cursor sobre un elemento en una interfaz gráfica de usuario. Este cuadro ofrece detalles 
+          adicionales sobre la función del elemento, proporcionando así una ayuda contextual. 
+          Por ejemplo, si pasas el cursor sobre un botón que guarda cambios en una aplicación, 
+          un Tooltip podría aparecer con el texto "Guardar", para clarificar qué hace ese botón. 
+          Los Tooltips son útiles para mejorar la experiencia del usuario, ya que proporcionan orientación 
+          sin requerir que se desplace a otra sección para obtener más información.</p>
+
+      <div>
+        <h3 class="diagram__name">Requerimiento</h3>
+        <p class="parrafos">Tu tarea es crear un Tooltip, un pequeño elemento emergente que proporciona 
+          información adicional cuando el usuario pasa el cursor sobre un elemento. Utilizarás JavaScript 
+          para manipular el DOM y crear este componente.</p>
+      </div>    
+
+      <div class="lista__1">
+        <ul class="lista__1_head">
+          <li><strong>Elemento Objetivo:</strong> El elemento sobre el cual aparecerá el Tooltip será cualquier elemento que tenga un atributo `data-tooltip` definido.</li>
+          <li><strong>Contenido del Tooltip:</strong> El valor del atributo será el mensaje que aparecerá en el Tooltip. Por ejemplo, un elemento con el atributo `data-tooltip="Grabar"` mostrará el texto "Grabar" como contenido del Tooltip.</li>
+          <li><strong>Posicionamiento:</strong> El Tooltip debe aparecer encima del elemento objetivo.</li>
+          <li><strong>Estilo:</strong> Sigue el diseño especificado en Figma para dar estilo al Tooltip</li>
+          <li><strong>Interacción:</strong> El Tooltip debe mostrarse cuando el usuario pase el cursor sobre el elemento objetivo y desaparecer cuando el cursor se mueva fuera del elemento. Pero no lo debe hacer inmediato. El mouse debe mantenerse por encima del elemento objetivo durante 300ms para luego mostrar el Tooltip. Si el cursor sale del elemento objetivo antes de cumplirse los 300ms, el Tooltip no debe mostrarse.</li>
+      </div>
+
+      <h3 class="diagram__name">Demo</h3>
+      <p class="parrafos">A continuación, presenta una demostración del Tooltip.</p>
+
+      <div class="pre11">
+          <button id="boton_tol" class="button center__button" data-tooltip="¡Funciona! 😄">Tooltip</button>
+            <p id="tooltip_1" class="funciona tooltip">"¡Funciona! 😄"</p>
+        </div>
+
+        <div>
+        <h2 class="diagram__subtitle">Crea un Formulario con Validación en tiempo real</h2>
+        <p class="parrafos">El objetivo de este ejercicio es crear un formulario HTML que realice validaciones 
+          en tiempo real utilizando JavaScript, persista el progreso usando localStorage y procese el envío usando 
+          JavaScript para mostrar un mensaje con la respuesta del servidor.</p>
+        </div>
+
+        <div>
+          <h3 class="diagram__name">Requerimientos</h3>
+          <h4 class="subtittle_cuatro">Campos del formulario:</h4>
+          <div class="lista__1">
+            <ul class="lista__1_head">
+              <li><strong>Nombre:</strong> Un input obligatorio</li>
+              <li><strong>Apodo:</strong> Un input obligatorio de entre 3 y 10 caracteres. Solo debe aceptar caracteres alfanuméricos. Estos son letras (a-z) o (A-Z), dígitos (0-9).</li>
+              <li><strong>Biografía:</strong> Textarea opcional, pero si se llena, deberá tener mínimo 100 caracteres.</li>
+              <li><strong>Contraseña:</strong> Un input obligatorio de mínimo 8 caracteres, al menos una letra mayúscula y un número.</li>
+          </div>
+        </div>
+
+        
+        <div>
+        <h4 class="subtittle_cuatro">Validación en Tiempo Real</h4>
+        <div class="lista__1">
+          <ul class="lista__1_head">
+            <li>Valida el contenido de cada campo inmediatamente cuando el usuario comienza a escribir en él.</li>
+            <li>Muestra un mensaje de error debajo del campo cuando no pasa la validación.</li>
+            <li>El mensaje de error debe desaparecer cuando el campo sea válido.</li>
+        </div>
+        </div>
+
+        <div>
+          <h4 class="subtittle_cuatro">Persistencia</h4>
+          <div class="lista__1">
+            <ul class="lista__1_head">
+              <li>Guarda el progreso del usuario en el `localStorage` cada vez que se valide un campo (no queremos guardar datos inválidos)</li>
+              <li>Al recargar la página, el formulario debe recuperar el estado guardado del `localStorage`.</li>
+              <li>El campo Contraseña contiene datos sensibles por lo tanto no debe almacenarse en `localStorage`</li>
+          </div>
+          </div>
+
+          <div>
+            <h4 class="subtittle_cuatro">Envío del Formulario</h4>
+            <div class="lista__1">
+              <ul class="lista__1_head">
+                <li>El botón para enviar el formulario debe estar deshabilitado hasta que todos los campos sean válidos.</li>
+                <li>Al hacer clic en enviar, simula una petición al servidor utilizando JavaScript. El método debe ser POST, la URL será el servicio echo '​https://mocktarget.apigee.net/echo'. Deberá tener el header Content-Type adecuado.</li>
+                <li>Luego de procesar la respuesta, añade un elemento debajo del formulario que muestre la respuesta del servidor en formato JSON.</li>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="diagram__name">Demo</h3>
+            <p class="parrafos">A continuación, presenta una demostración del Formulario con validación.</p>
+            <div class="code">
+              <pre>document.addEventListener("DOMContentLoaded", function() { <br>
+                const formulario = document.getElementById('formulario_final'); <br>
+                const inputs = document.querySelectorAll('#formulario_final input'); <br>
+                const areasText = document.querySelectorAll('#formulario_final textarea'); <br>
+              
+                const expresiones = { <br>
+                  nombre: /^[a-zA-ZÀ-ÿ\s]{3,40}$/,  <br>
+                    apodo: /^[a-zA-Z0-9]{3,10}$/, <br>
+                    contraseña: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,12}$/,  <br>
+                    biografia: /^.{100,}$/ <br>
+                }; <br>
+              
+                const campos = { <br>
+                    nombre: false, <br>
+                    apodo: false, <br>
+                    contraseña: false, <br>
+                    biografia: true <br>
+                }; <br>
+              
+                const validarFormulario = (e) => { <br>
+                    switch (e.target.name) { <br>
+                        case "nombre": <br>
+                            validarCampo(expresiones.nombre, e.target, 'nombre'); <br>
+                            break; <br>
+                        case "apodo": <br>
+                            validarCampo(expresiones.apodo, e.target, 'apodo'); <br>
+                            break; <br>
+                        case "contraseña": <br>
+                            validarCampo(expresiones.contraseña, e.target, 'contraseña'); <br>
+                            break; <br>
+                        case "biografia": <br>
+                            validarCampo(expresiones.biografia, e.target, 'biografia'); <br>
+                            break; <br>
+                    } <br>
+                }; <br>
+              
+                const validarCampo = (expresion, input, campo) => { <br>
+                    if (expresion.test(input.value)) { <br>
+                        document.getElementById(`grupo_${campo}`).classList.remove('form-field-incorrecto'); <br>
+                        document.getElementById(`grupo_${campo}`).classList.add('form-field-correcto'); <br>
+                        document.getElementById(`${campo}Error`).style.display = "none"; <br>
+                        campos[campo] = true; <br>
+                        if (campo !== "contraseña") { <br>
+                            localStorage.setItem(campo, input.value); <br>
+                        } <br>
+                    } else { <br>
+                        document.getElementById(`grupo_${campo}`).classList.add('form-field-incorrecto'); <br>
+                        document.getElementById(`grupo_${campo}`).classList.remove('form-field-correcto'); <br>
+                        document.getElementById(`${campo}Error`).style.display = "block"; <br>
+                        campos[campo] = false; <br>
+                    }
+                    validarFormularioCompleto(); <br>
+                };
+              
+                const validarFormularioCompleto = () => { <br>
+                    const validForm = campos.nombre && campos.apodo && campos.contraseña && campos.biografia; <br>
+                    document.querySelector("input[type='submit']").disabled = !validForm; <br>
+                }; <br>
+              
+                inputs.forEach(input => { <br>
+                    input.addEventListener('keyup', validarFormulario); <br>
+                    input.addEventListener('blur', validarFormulario); <br>
+                }); <br>
+              
+                areasText.forEach(area => { <br>
+                    area.addEventListener('keyup', validarFormulario); <br>
+                    area.addEventListener('blur', validarFormulario); <br>
+                }); <br>
+              
+                const loadSavedData = () => { <br>
+                    inputs.forEach(input => { <br>
+                        if (input.id !== "contraseña") { <br>
+                            const savedValue = localStorage.getItem(input.id); <br>
+                            if (savedValue) { <br>
+                                input.value = savedValue; <br>
+                                validarCampo(expresiones[input.id], input, input.id); <br>
+                            } <br>
+                        } <br>
+                    }); <br>
+                    areasText.forEach(area => { <br>
+                        const savedValue = localStorage.getItem(area.id); <br>
+                        if (savedValue) { <br>
+                            area.value = savedValue; <br>
+                            validarCampo(expresiones[area.id], area, area.id); <br>
+                        } <br>
+                    }); <br>
+                }; <br>
+              
+                loadSavedData(); <br>
+              
+                formulario.addEventListener("submit", (e) => { <br>
+                    e.preventDefault(); <br>
+              
+                    const formData = { <br>
+                        nombre: formulario.nombre.value, <br>
+                        apodo: formulario.apodo.value, <br>
+                        biografia: formulario.biografia.value <br>
+                        // Contraseña no se guarda en localStorage <br>
+                    }; <br>
+              
+                    fetch('https://mocktarget.apigee.net/echo', { <br>
+                        method: 'POST', <br>
+                        headers: { <br>
+                            'Content-Type': 'application/json' <br>
+                        }, <br>
+                        body: JSON.stringify(formData) <br>
+                    }) <br>
+                    .then(response => response.json()) <br>
+                    .then(data => { <br>
+                        const responseDiv = document.getElementById("serverResponse"); <br>
+                        responseDiv.innerHTML = `&lt;pre&gt; ${JSON.stringify(data, null, 2)} &lt;/pre&gt;`; <br>
+                        responseDiv.style.display = 'block'; <br>
+                        formulario.reset(); <br>
+                        localStorage.clear(); <br>
+                        validarFormularioCompleto(); <br>
+                    })
+                    .catch(error => { <br>
+                        console.error('Error:', error); <br>
+                    }); <br>
+                }); <br>
+              }); <br>
+              </pre>
+            </div>
+          </div>
+
+          <div class="form_head">
+
+          <div class="principal_form">
+
+          <form name="register" class="unete-form" id="formulario_final">
+
+          <div>
+            <div class="form-field" id="grupo_nombre">
+              <label for="nombre">Nombre Completo</label> <br>
+              <input class="formulario_input" type="text" name="nombre" id="nombre" value="" placeholder="Micaela Bolognesi" required>
+              <p class="form_parrafo_error">Escribe tu nombre y apellido</p>
+            </div>  
+          </div>
+
+            <div class="form-field" id="grupo_apodo">
+              <label for="apodo">Apodo</label> <br>
+              <input type="text" name="apodo" id="apodo" value="" placeholder="Mica" required minlength="3" maxlength="10" pattern="[A-Za-z0-9]+">
+              <p class="form_parrafo_error">Debe tener entre 3 y 10 caracteres alfanumericos</p>
+            </div>
+            
+            <div class="form-field" id="grupo_biografia">
+              <label for="biografia">Biografia</label> <br>     
+              <textarea id="biografia" name="biografia" rows="4" required minlength="100" pattern="[A-Za-z0-9]+"></textarea>
+              <p class="form_parrafo_error">Entre 100 y 400 caracteres</p>
+            </div> 
+
+            <div class="form-field" id="grupo_contraseña">
+              <label for="constraseña">Contraseña</label> <br>
+              <input type="password" name="contraseña" id="contraseña" value="" required minlength="8" maxlength="12">
+              <p class="form_parrafo_error">la contraseña debe ser de 8 a 12 digitos, con una mayúscula y un numero</p>
+            </div>
+
+            <div class="form-field">
+              <p class="form_parrafo_error">Porfavor llena el formulario completamente</p>
+            </div>
+            
+            <button type="submit" class="button full-width span-2">Enviar</button>
+            <p class="form_parrafo_exito">Formulario enviado exitosamente</p>
+
+          </form>
+
+        </div>
+          
+      </div>
+      <div id="serverResponse"></div>
+    </div>
+
+    <script src="/tooltip.js"></script>
+    <script src="formulario.js"></script>
+  </body>
+</html>

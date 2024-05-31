@@ -1,0 +1,30 @@
+.tooltip {
+    display: flex;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    background: white;
+    border-radius: var(--rounded);
+    width: 90px;
+    height: 32px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    z-index: 1000;
+    opacity: 0;
+    transition: 300 ease all;
+    transform: translateY(10px);
+
+    font-family: var(--text);
+font-size: var(--font-xs);
+font-weight: 400;
+line-height: var(--leading-4);
+text-align: left;
+}
+
+.tooltip.activo {
+    opacity: 1;
+    transform: translateY(0px);
+} 
+
+
+
+
